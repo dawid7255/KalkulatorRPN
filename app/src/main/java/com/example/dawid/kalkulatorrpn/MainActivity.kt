@@ -11,7 +11,7 @@ import kotlin.math.sqrt
 class MainActivity : AppCompatActivity() {
 
     private var NumerStosu: Deque<Double> = ArrayDeque<Double>()
-    private var historyStack: Deque<Deque<Double>> = ArrayDeque<Deque<Double>>()
+    private var historia: Deque<Deque<Double>> = ArrayDeque<Deque<Double>>()
     private var buffor=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    fun PokazLiczby(isUndo: Boolean): String {
+    fun PokazEkran(isUndo: Boolean): String {
         var text = ""
         var i = NumerStosu.count()
 
@@ -28,19 +28,20 @@ class MainActivity : AppCompatActivity() {
             i--
         }
         if(!isUndo){
-            if(historyStack.count() > 10)
+            if(historia.count() > 20)
             {
-                historyStack.removeLast()
+                historia.removeLast()
             }
             var tmp : Deque<Double> = ArrayDeque<Double>(NumerStosu)
-            historyStack.push(tmp)
+            historia.push(tmp)
         }
         return text
     }
 
     private fun OdswiezStos(isUndo  : Boolean = false){
         TextViewBuffor.text = buffor
-        Stos.text = PokazLiczby(isUndo)
+        ilosc.text = "Ilosc: "+(NumerStosu.count()).toString()
+        Stos.text = PokazEkran(isUndo)
     }
 
     fun Jeden(v: View){
@@ -98,6 +99,9 @@ class MainActivity : AppCompatActivity() {
         {
             buffor += "."
         }
+        if(buffor.isNullOrEmpty()){
+            buffor += "0."
+        }
         TextViewBuffor.text = buffor
     }
 
@@ -125,14 +129,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun UsunZStosu(v: View){
-        NumerStosu.removeFirst()
-        OdswiezStos()
+        if((NumerStosu.count())>0) {
+            NumerStosu.removeFirst()
+            OdswiezStos()
+        }
     }
 
     fun AC(v: View){
-        NumerStosu.clear()
-        buffor=""
-        OdswiezStos()
+        if((NumerStosu.count())>0) {
+            NumerStosu.clear()
+            buffor = ""
+            OdswiezStos()
+        }
     }
 
     fun Usun(v: View){
@@ -143,30 +151,36 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun Cofnij(v: View){
-        historyStack.removeFirst()
-        var tmp : Deque<Double> = ArrayDeque<Double>(historyStack.first())
-        NumerStosu = tmp
-        OdswiezStos(true)
+        if((historia.count())>1) {
+            historia.removeFirst()
+            var tmp: Deque<Double> = ArrayDeque<Double>(historia.first())
+            NumerStosu = tmp
+            OdswiezStos(true)
+        }
     }
 
     fun Zamien(v: View){
-        var ostatni = NumerStosu.first()
-        NumerStosu.removeFirst()
+        if((NumerStosu.count())>1) {
+            var ostatni = NumerStosu.first()
+            NumerStosu.removeFirst()
 
-        var przedostatni = NumerStosu.first()
-        NumerStosu.removeFirst()
+            var przedostatni = NumerStosu.first()
+            NumerStosu.removeFirst()
 
-        NumerStosu.push(ostatni)
-        NumerStosu.push(przedostatni)
-        OdswiezStos()
+            NumerStosu.push(ostatni)
+            NumerStosu.push(przedostatni)
+            OdswiezStos()
+        }
     }
 
     fun Znak(v: View){
-        var liczba = NumerStosu.first()
-        NumerStosu.removeFirst()
-        liczba = liczba * -1
-        NumerStosu.addFirst(liczba)
-        OdswiezStos()
+        if((NumerStosu.count())>0) {
+            var liczba = NumerStosu.first()
+            NumerStosu.removeFirst()
+            liczba = liczba * -1
+            NumerStosu.addFirst(liczba)
+            OdswiezStos()
+        }
     }
 
     fun Suma(v: View){
@@ -206,48 +220,41 @@ class MainActivity : AppCompatActivity() {
         {
             return
         }
-        var lastElement = NumerStosu.first()
+        var ostatni = NumerStosu.first()
         NumerStosu.removeFirst()
 
-        var beforeLastElement = NumerStosu.first()
+        var przedostatni = NumerStosu.first()
         NumerStosu.removeFirst()
 
 
         when(typeOperation){
             Operacja.suma-> {
-                Wynik =  beforeLastElement + lastElement
+                Wynik =  przedostatni + ostatni
             }
             Operacja.odejmowanie->{
-                Wynik =  beforeLastElement - lastElement
+                Wynik =  przedostatni - ostatni
             }
             Operacja.mnozenie->{
-                Wynik = beforeLastElement * lastElement
+                Wynik = przedostatni * ostatni
             }
             Operacja.dzielenie ->{
-                Wynik = beforeLastElement / lastElement
+                Wynik = przedostatni / ostatni
             }
             Operacja.potega ->{
-                Wynik = beforeLastElement.pow(lastElement)
+                Wynik = przedostatni.pow(ostatni)
             }
             Operacja.pierwiastek ->{
-                NumerStosu.push(beforeLastElement)
-                Wynik = sqrt(lastElement)
+                NumerStosu.push(przedostatni)
+                Wynik = sqrt(ostatni)
             }
             else ->{
                 Wynik = 0.0
             }
         }
-
         NumerStosu.push(Wynik)
     }
-
 }
 
 public enum class Operacja {
-    suma,
-    odejmowanie,
-    mnozenie,
-    dzielenie,
-    potega,
-    pierwiastek
+    suma, odejmowanie, mnozenie, dzielenie, potega, pierwiastek
 }

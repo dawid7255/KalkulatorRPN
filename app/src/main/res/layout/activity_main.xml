@@ -36,11 +36,11 @@
                 android:ellipsize="marquee"
                 android:scrollbars="vertical"
                 android:text=""
-                android:textAlignment="textEnd"
+                android:textAlignment="textStart"
                 android:textSize="30dp"
                 android:textColor="@color/white1"
-                android:gravity="end"
-                android:layout_marginRight="15dp"
+                android:gravity="start"
+                android:layout_marginLeft="15dp"
                 />
         </ScrollView>
 
@@ -55,12 +55,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
                 android:text=""
                 android:textSize="30dp"
                 android:textColor="@color/white1"
+                android:textAlignment="textStart"
+                android:gravity="start" />
+
+            <TextView
+                android:id="@+id/ilosc"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="Count: 0"
                 android:textAlignment="textEnd"
-                android:gravity="end" />
+                android:textColor="@color/white2"
+                android:textSize="20dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -320,14 +332,14 @@
 
             <Button
                 android:id="@+id/ButtonEnter"
-                android:layout_width="170dp"
+                android:layout_width="165dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@color/black2"
                 android:onClick="Enter"
                 android:text="Enter"
                 android:textColor="@color/white1"
-                android:textSize="20dp"/>
+                android:textSize="20dp" />
 
             <Button
                 android:id="@+id/B0"
