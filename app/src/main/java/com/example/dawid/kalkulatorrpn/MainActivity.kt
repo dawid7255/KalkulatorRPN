@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
-import java.io.Serializable
 import java.util.*
 import kotlin.math.pow
 import kotlin.math.sqrt
@@ -13,7 +12,6 @@ class MainActivity : AppCompatActivity() {
 
     private var NumerStosu: Deque<Double> = ArrayDeque<Double>()
     private var historyStack: Deque<Deque<Double>> = ArrayDeque<Deque<Double>>()
-    private var kalk = Kalku()
     private var buffor=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,13 +19,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    fun GetStack(isUndo: Boolean): String {
+    fun PokazLiczby(isUndo: Boolean): String {
         var text = ""
         var i = NumerStosu.count()
 
         NumerStosu.forEach() {
             text += i.toString() + ":   "  + String.format("%." + 2 +"f",it) + "\n"
-            i++
+            i--
         }
         if(!isUndo){
             if(historyStack.count() > 10)
@@ -42,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun OdswiezStos(isUndo  : Boolean = false){
         TextViewBuffor.text = buffor
-        Stos.text = GetStack(isUndo)
+        Stos.text = PokazLiczby(isUndo)
     }
 
     fun Jeden(v: View){
@@ -163,107 +161,93 @@ class MainActivity : AppCompatActivity() {
         OdswiezStos()
     }
 
-    fun ChangeSign(v: View){
-        //calculator.ChangeSignLastElemt()
+    fun Znak(v: View){
+        var liczba = NumerStosu.first()
+        NumerStosu.removeFirst()
+        liczba = liczba * -1
+        NumerStosu.addFirst(liczba)
         OdswiezStos()
     }
 
     fun Suma(v: View){
-        //calculator.OperationOnStack(Operacje.suma)
+        DzialaniaNaStosie(Operacja.suma)
         OdswiezStos()
     }
 
     fun Odejmowanie(v: View){
-        //calculator.OperationOnStack(Operacje.odejmowanie)
+        DzialaniaNaStosie(Operacja.odejmowanie)
         OdswiezStos()
     }
 
     fun Mnozenie(v: View){
-        //calculator.OperationOnStack(Operacje.mnozenie)
+        DzialaniaNaStosie(Operacja.mnozenie)
         OdswiezStos()
     }
 
     fun Dzielenie(v: View){
-        //calculator.OperationOnStack(Operacje.dzielenie)
+        DzialaniaNaStosie(Operacja.dzielenie)
         OdswiezStos()
     }
 
     fun Potega(v: View){
-        //calculator.OperationOnStack(Operacje.potega)
+        DzialaniaNaStosie(Operacja.potega)
         OdswiezStos()
     }
 
     fun Pierwiastek(v: View){
-        //calculator.OperationOnStack(Operacje.pierwiastek)
+        DzialaniaNaStosie(Operacja.pierwiastek)
         OdswiezStos()
     }
+
+    fun DzialaniaNaStosie(typeOperation: Operacja){
+        val Wynik : Double
+
+        if(NumerStosu.count() < 2 || typeOperation == Operacja.pierwiastek)
+        {
+            return
+        }
+        var lastElement = NumerStosu.first()
+        NumerStosu.removeFirst()
+
+        var beforeLastElement = NumerStosu.first()
+        NumerStosu.removeFirst()
+
+
+        when(typeOperation){
+            Operacja.suma-> {
+                Wynik =  beforeLastElement + lastElement
+            }
+            Operacja.odejmowanie->{
+                Wynik =  beforeLastElement - lastElement
+            }
+            Operacja.mnozenie->{
+                Wynik = beforeLastElement * lastElement
+            }
+            Operacja.dzielenie ->{
+                Wynik = beforeLastElement / lastElement
+            }
+            Operacja.potega ->{
+                Wynik = beforeLastElement.pow(lastElement)
+            }
+            Operacja.pierwiastek ->{
+                NumerStosu.push(beforeLastElement)
+                Wynik = sqrt(lastElement)
+            }
+            else ->{
+                Wynik = 0.0
+            }
+        }
+
+        NumerStosu.push(Wynik)
+    }
+
 }
 
-
-public enum class Operacje {
+public enum class Operacja {
     suma,
     odejmowanie,
     mnozenie,
     dzielenie,
     potega,
     pierwiastek
-}
-
-public class Kalku : Serializable
-{
-    private var numbersInStack: Deque<Double> = ArrayDeque<Double>()
-    private var historyStack: Deque<Deque<Double>> = ArrayDeque<Deque<Double>>()
-    private var precission = 2
-
-
-
-
-    fun OperationOnStack(typeOperation: Operacje){
-        val resultSum : Double
-
-        if(numbersInStack.count() < 2 || typeOperation == Operacje.pierwiastek)
-        {
-            return
-        }
-        var lastElement = numbersInStack.first()
-        numbersInStack.removeFirst()
-
-        var beforeLastElement = numbersInStack.first()
-        numbersInStack.removeFirst()
-
-
-        when(typeOperation){
-            Operacje.suma-> {
-                resultSum =  beforeLastElement + lastElement
-            }
-            Operacje.odejmowanie->{
-                resultSum =  beforeLastElement - lastElement
-            }
-            Operacje.mnozenie->{
-                resultSum = beforeLastElement * lastElement
-            }
-            Operacje.dzielenie ->{
-                resultSum = beforeLastElement / lastElement
-            }
-            Operacje.potega ->{
-                resultSum = beforeLastElement.pow(lastElement)
-            }
-            Operacje.pierwiastek ->{
-                numbersInStack.push(beforeLastElement)
-                resultSum = sqrt(lastElement)
-            }
-            else ->{
-                resultSum = 0.0
-            }
-        }
-
-        numbersInStack.push(resultSum)
-    }
-
-    fun ChangeSignLastElemt(){
-        var numberStack = numbersInStack.last()
-        numbersInStack.removeLast()
-        numberStack = numberStack * -1
-        numbersInStack.addLast(numberStack)
-    }
 }

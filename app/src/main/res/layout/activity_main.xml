@@ -91,12 +91,12 @@
                 android:textSize="20dp"/>
 
             <Button
-                android:id="@+id/buttonChangeSign"
+                android:id="@+id/ButtonZnak"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@color/black2"
-                android:onClick="ChangeSign"
+                android:onClick="Znak"
                 android:text="+/-"
                 android:textColor="@color/white1"
                 android:textSize="20dp"/>
