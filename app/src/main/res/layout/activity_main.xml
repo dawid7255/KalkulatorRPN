@@ -4,47 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/black2">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textViewCountStack"
-                android:layout_width="277dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="" />
-        </LinearLayout>
-
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="176dp">
+            android:layout_height="200dp">
 
             <TextView
-                android:id="@+id/textView"
-                android:scrollbars = "vertical"
+                android:id="@+id/Stos"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:ellipsize="marquee"
-
-                android:layout_height="176dp"
-                android:text="" />
+                android:scrollbars="vertical"
+                android:text=""
+                android:textAlignment="textEnd"
+                android:textSize="30dp"
+                android:textColor="@color/white1"
+                android:gravity="end"
+                android:layout_marginRight="15dp"
+                />
         </ScrollView>
 
 
@@ -54,19 +51,16 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textViewArrow"
+                android:id="@+id/TextViewBuffor"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="=>" />
-
-            <TextView
-                android:id="@+id/textViewCurrentText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="" />
+                android:layout_marginRight="15dp"
+                android:text=""
+                android:textSize="30dp"
+                android:textColor="@color/white1"
+                android:textAlignment="textEnd"
+                android:gravity="end" />
         </LinearLayout>
 
         <LinearLayout
@@ -79,220 +73,294 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="UndoOperation"
-                android:text="Undo" />
+                android:background="@color/black2"
+                android:onClick="Cofnij"
+                android:text="Undo"
+                android:textColor="@color/white1"
+                android:textSize="20dp"/>
 
             <Button
-                android:id="@+id/buttonClearSign"
+                android:id="@+id/AC"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="DeleteDigit"
-                android:text="Del" />
-
-            <Button
-                android:id="@+id/buttonAc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="ClearElement"
-                android:text="AC" />
-
-            <Button
-                android:id="@+id/buttonDrop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="RemoveLastElement"
-                android:text="Drop" />
-
-            <Button
-                android:id="@+id/buttonSwap"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="SwapElement"
-                android:text="Swap" />
-
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/button1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="AddOne"
-                android:text="1" />
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="AddTwo"
-                android:text="2" />
-
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="AddThree"
-                android:text="3" />
-
-            <Button
-                android:id="@+id/buttonSum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="Sum"
-                android:text="+" />
-
-            <Button
-                android:id="@+id/buttonMinus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="Minus"
-                android:text="-" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="AddFour"
-                android:text="4" />
-
-            <Button
-                android:id="@+id/button5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="AddFive"
-                android:text="5" />
-
-            <Button
-                android:id="@+id/button6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="AddSix"
-                android:text="6" />
-
-            <Button
-                android:id="@+id/buttonMultiple"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="Multiple"
-                android:text="*" />
-
-            <Button
-                android:id="@+id/buttonDevided"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="Devided"
-                android:text="/" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/button7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="AddSeven"
-                android:text="7" />
-
-            <Button
-                android:id="@+id/button8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="AddEight"
-                android:text="8" />
-
-            <Button
-                android:id="@+id/button9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="AddNine"
-                android:text="9" />
-
-            <Button
-                android:id="@+id/buttonPower"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="Power"
-                android:text="^" />
-
-            <Button
-                android:id="@+id/buttonSqrt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="Sqrt"
-                android:text="Sqrt" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/button0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="AddZero"
-                android:text="0" />
+                android:background="@color/black2"
+                android:onClick="AC"
+                android:text="AC"
+                android:textColor="@color/white1"
+                android:textSize="20dp"/>
 
             <Button
                 android:id="@+id/buttonChangeSign"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@color/black2"
                 android:onClick="ChangeSign"
-                android:text="+/-" />
+                android:text="+/-"
+                android:textColor="@color/white1"
+                android:textSize="20dp"/>
 
             <Button
-                android:id="@+id/buttonDot"
+                android:id="@+id/SQRT"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="AddPoint"
-                android:text="." />
+                android:background="@color/black2"
+                android:onClick="Pierwiastek"
+                android:text="Sqrt"
+                android:textColor="@color/white1"
+                android:textSize="20dp"/>
+
+            <Button
+                android:id="@+id/XN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/black2"
+                android:onClick="Potega"
+                android:text="Xn"
+                android:textColor="@color/white1"
+                android:textSize="20dp"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonSwap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/black2"
+                android:onClick="Zamien"
+                android:text="Swap"
+                android:textColor="@color/white1"
+                android:textSize="20dp"
+                />
+
+            <Button
+                android:id="@+id/B7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/black2"
+                android:onClick="Siedem"
+                android:text="7"
+                android:textColor="@color/white1"
+                android:textSize="20dp"/>
+
+            <Button
+                android:id="@+id/B8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/black2"
+                android:onClick="Osiem"
+                android:text="8"
+                android:textColor="@color/white1"
+                android:textSize="20dp"/>
+
+            <Button
+                android:id="@+id/B9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/black2"
+                android:onClick="Dziewiec"
+                android:text="9"
+                android:textColor="@color/white1"
+                android:textSize="20dp"/>
+
+            <Button
+                android:id="@+id/BDzielenie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/black2"
+                android:onClick="Dzielenie"
+                android:text="/"
+                android:textColor="@color/white1"
+                android:textSize="20dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonDrop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/black2"
+                android:onClick="UsunZStosu"
+                android:text="Drop"
+                android:textColor="@color/white1"
+                android:textSize="20dp"/>
+
+            <Button
+                android:id="@+id/B4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/black2"
+                android:onClick="Cztery"
+                android:text="4"
+                android:textColor="@color/white1"
+                android:textSize="20dp"/>
+
+            <Button
+                android:id="@+id/B5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/black2"
+                android:onClick="Piec"
+                android:text="5"
+                android:textColor="@color/white1"
+                android:textSize="20dp"/>
+
+            <Button
+                android:id="@+id/B6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/black2"
+                android:onClick="Szesc"
+                android:text="6"
+                android:textColor="@color/white1"
+                android:textSize="20dp"/>
+
+            <Button
+                android:id="@+id/ButtonMnozenie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/black2"
+                android:onClick="Mnozenie"
+                android:text="*"
+                android:textColor="@color/white1"
+                android:textSize="20dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/ButtonUsun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/black2"
+                android:onClick="Usun"
+                android:text="Del"
+                android:textColor="@color/white1"
+                android:textSize="20dp"/>
+
+            <Button
+                android:id="@+id/B1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/black2"
+                android:onClick="Jeden"
+                android:text="1"
+                android:textColor="@color/white1"
+                android:textSize="20dp"/>
+
+            <Button
+                android:id="@+id/B2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/black2"
+                android:onClick="Dwa"
+                android:text="2"
+                android:textColor="@color/white1"
+                android:textSize="20dp"/>
+
+            <Button
+                android:id="@+id/B3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/black2"
+                android:onClick="Trzy"
+                android:text="3"
+                android:textColor="@color/white1"
+                android:textSize="20dp"/>
+
+            <Button
+                android:id="@+id/ButtonOdejmowanie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/black2"
+                android:onClick="Odejmowanie"
+                android:text="-"
+                android:textColor="@color/white1"
+                android:textSize="20dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
 
             <Button
-                android:id="@+id/buttonEnter"
-                android:layout_width="159dp"
+                android:id="@+id/ButtonEnter"
+                android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="AddElement"
-                android:text="Enter" />
+                android:background="@color/black2"
+                android:onClick="Enter"
+                android:text="Enter"
+                android:textColor="@color/white1"
+                android:textSize="20dp"/>
+
+            <Button
+                android:id="@+id/B0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/black2"
+                android:onClick="Zero"
+                android:text="0"
+                android:textColor="@color/white1"
+                android:textSize="20dp"/>
+
+            <Button
+                android:id="@+id/BKropka"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/black2"
+                android:onClick="Kropka"
+                android:text="."
+                android:textColor="@color/white1"
+                android:textSize="20dp"/>
+
+            <Button
+                android:id="@+id/ButtonSuma"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/black2"
+                android:onClick="Suma"
+                android:text="+"
+                android:textColor="@color/white1"
+                android:textSize="20dp"/>
         </LinearLayout>
 
     </LinearLayout>
