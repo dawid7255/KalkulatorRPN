@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,7 +10,6 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:layout_marginBottom="8dp"
@@ -30,7 +30,7 @@
             android:layout_height="200dp">
 
             <TextView
-                android:id="@+id/Stos"
+                android:id="@+id/EkranStos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="marquee"
@@ -81,7 +81,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/buttonUndo"
+                android:id="@+id/BUndo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -103,7 +103,7 @@
                 android:textSize="20dp"/>
 
             <Button
-                android:id="@+id/ButtonZnak"
+                android:id="@+id/BZnak"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -144,7 +144,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/buttonSwap"
+                android:id="@+id/BSwap"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -207,7 +207,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/buttonDrop"
+                android:id="@+id/BDrop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -251,7 +251,7 @@
                 android:textSize="20dp"/>
 
             <Button
-                android:id="@+id/ButtonMnozenie"
+                android:id="@+id/BMnozenie"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -269,7 +269,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/ButtonUsun"
+                android:id="@+id/BUsun"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -313,7 +313,7 @@
                 android:textSize="20dp"/>
 
             <Button
-                android:id="@+id/ButtonOdejmowanie"
+                android:id="@+id/BOdejmowanie"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -331,7 +331,7 @@
 
 
             <Button
-                android:id="@+id/ButtonEnter"
+                android:id="@+id/BEnter"
                 android:layout_width="165dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -364,7 +364,7 @@
                 android:textSize="20dp"/>
 
             <Button
-                android:id="@+id/ButtonSuma"
+                android:id="@+id/BSuma"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
