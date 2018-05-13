@@ -1,13 +1,15 @@
 package com.example.dawid.kalkulatorrpn
 
+import android.graphics.Color
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 import kotlin.math.pow
 import kotlin.math.sqrt
+import android.widget.Toast
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -286,21 +288,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun UjemnaLiczba() {
-        val dialogBuilder = AlertDialog.Builder(this)
-        dialogBuilder.setTitle("Error!")
-        dialogBuilder.setMessage("The number is negative!")
-        dialogBuilder.create().show()
+        Toast.makeText(applicationContext, "The number is negative!",Toast.LENGTH_SHORT).show()
     }
     fun MaloLiczb() {
-        val dialogBuilder = AlertDialog.Builder(this)
-        dialogBuilder.setTitle("Error!")
-        dialogBuilder.setMessage("Not enough numbers on the stack!")
-        dialogBuilder.create().show()
+        Toast.makeText(applicationContext, "Not enough numbers on the stack!",Toast.LENGTH_SHORT).show()
     }
     fun BrakHistori() {
-        val dialogBuilder = AlertDialog.Builder(this)
+        Toast.makeText(applicationContext, "No history!",Toast.LENGTH_SHORT).show()
+        /*val dialogBuilder = AlertDialog.Builder(this)
         dialogBuilder.setTitle("Error!")
         dialogBuilder.setMessage("No history!")
-        dialogBuilder.create().show()
+        dialogBuilder.create().show()*/
+    }
+
+    fun kolorPomaranczowy(){
+        calyekran.setBackgroundColor(Color.parseColor("#F7BE45"))
+    }
+    fun kolorSzary(){
+        calyekran.setBackgroundColor(Color.parseColor("#ACA899"))
+    }
+    fun kolorOryginalny(){
+        calyekran.setBackgroundColor(Color.parseColor("#222222"))
     }
 }
